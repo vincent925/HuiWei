@@ -1,0 +1,133 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(
+            function () {
+                //下面使用的是插件默认的样式显示,content是指要显示的内容（包括文字和图片）
+                $("#huangbiao").qtip({
+                    content: 'Stems are great for indicating the context of the tooltip.',
+                    style: {
+                        tip: 'bottomLeft' // Notice the corner value is identical to the previously mentioned positioning corners
+                    }
+                });
+
+                //style json是对提示样式的设置即外面的div样式设置，但是没有设置具体的位置
+                $("#huangbiao1").qtip({
+                    content: '设置显示文字样式',
+                    style: {
+                        width: 200,
+                        padding: 5,
+                        background: '#A2D959',
+                        color: 'black',
+                        textAlign: 'center',
+                        border: {
+                            width: 7,
+                            radius: 5,
+                            color: '#A2D959'
+                        },
+                        tip: 'bottomLeft',
+                        name: 'dark' // Inherit the rest of the attributes from the preset dark style
+                    }
+                });
+
+                //name:'green' 是继承了默认的提示样式，还有其他的name可以参考帮助文档
+                $("#huangbiao2").qtip({
+                    content: '使用插件自定义的样式',
+                    style: {
+                        name: 'green' // Notice the corner value is identical to the previously mentioned positioning corners
+                    }
+                });
+
+                //target:表示提示信息显示在控件的什么位置
+                //tooltip:
+                $("#huangbiao3").qtip({
+                    content: 'Stems are great for indicating the context of the tooltip.',
+                    position: {
+                        corner: {
+                            target: 'topLeft',
+                            tooltip: 'bottomLeft'
+                        }
+                    }
+                });
+
+                $("#huangbiao4").qtip({
+                    content: '<img src="img/2.jpg">',
+                });
+
+                //show 是指显示的情况，when是指什么事件触发让它显示出来，hide与show对应
+                //solo:
+                $("#huangbiao5").qtip({
+                    content: '<img src="img/2.jpg">',
+                    show: {
+                        when: 'click',
+                        solo: false
+                    },
+                    hide: {
+                        when: 'click',
+                        solo: false
+                    }
+                });
+
+                //显示类似于“窗口”模式的样式，含有title和内容的提示信息
+                $("#huangbiao6").qtip({
+                    content: {
+                        title: {
+                            text: 'content-title-text',
+                            button: 'button'
+                        },
+                        text: 'content-text'
+                    },
+                    fixed: true
+                });
+
+                //api:是回调函数，beforeShow是在显示提示之前的提示信息，beforeHide则恰好相反；onRender是指内容呈现后调用
+                $("#huangbiao7").qtip({
+                    content: 'use callback function',
+                    api: {
+                        beforeShow: function () {
+                            alert("beforeShow api function");
+                        },
+                        beforeHide: function () {
+                            alert("beforeHide api function");
+                        }
+                    }
+                });
+
+                $("#huangbiao9").qtip({
+                    content: '',
+                    style: {
+                        width: "1024px",
+                        height: "1024px",
+                        background: "black"
+                    }
+                });
+            }
+        );
+
+    </script>
+    <title>无标题文档</title>
+</head>
+<div style="text-align:center;"><span id="huangbiao">显示普通文字</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao1">设置显示文字样式</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao2">使用插件自定义的样式</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao3">设置提示的显示位置</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao4">显示图片</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao5">点击事件显示以及隐藏提示</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao6">含有标题的提示信息</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao7">使用回调函数</span></div>
+<p>
+    <div style="text-align:center;"><span id="huangbiao9">遮盖全屏</span></div>
+    <body>
+    </body>
+</html>  

@@ -1,0 +1,68 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+
+    <title>回 味</title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/blog.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/layout")
+    @Scripts.Render("~/bundles/ie")
+</head>
+
+<body>
+
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="blog-nav">
+                <a class="blog-nav-item @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+	{
+        Output.Write("active");
+	}" href="/Home/Index">主站</a>
+                <a class="blog-nav-item @if (ViewContext.RouteData.Values["controller"].ToString() == "Image")
+	{
+        Output.Write("active");
+	}" href="/Image/Index">图片区</a>
+                <a class="blog-nav-item @if (ViewContext.RouteData.Values["controller"].ToString() == "Audio")
+	{
+        Output.Write("active");
+	}" href="#">音频区</a>
+                <a class="blog-nav-item @if (ViewContext.RouteData.Values["controller"].ToString() == "video")
+	{
+        Output.Write("active");
+	}" href="#">视频区</a>
+                <a class="blog-nav-item" href="/Home/About">关于我们</a>
+                @if (Session["ss_User"] != null)
+{
+    Domain.System.Core.User user = Session["ss_User"] as Domain.System.Core.User;
+    <a class="blog-nav-item navbar-right" href="/Post/Add">@user.UserName</a>
+}
+else
+{
+                    <a class="blog-nav-item navbar-right" href="/Account/Login">登录</a>
+                }
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+        <p>Power by <a href="http://weibo.com/900925666">@string.Format("@{0}", "Vincent")</a></p>
+        <p>
+            <a href="#">回到顶部</a>
+        </p>
+    </div>
+    <div style="display:none">
+    <script src="http://s11.cnzz.com/z_stat.php?id=1253630758&web_id=1253630758" language="JavaScript"></script></div>
+
+</body>
+</html>
